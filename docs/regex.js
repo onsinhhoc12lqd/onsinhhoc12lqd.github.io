@@ -2,7 +2,7 @@ let qss = [];
 
 
 function matchK1() {
-    return k.match(/(?<=(Câu ))(\d){1,2}(?!=(A:))(.)*/gm);
+    return k.match(/(?<=(Câu ))(\d){1,2}([\S\s](?!(A\))))*/gm);
 }
 
 function clean(v) {
