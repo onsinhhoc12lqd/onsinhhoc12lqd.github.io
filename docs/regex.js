@@ -54,6 +54,14 @@ function assemble() {
     return sx;
 }
 
+function sh(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
 let ss = [65, 28, 70, 33, 42, 28, 65, 28, 59, 73],
     cc = 3;
 function lgen() {
@@ -70,7 +78,7 @@ function lgen() {
         count+=ss[i];
     }
     qss = qlist;
-    return qlist;
+    return sh(qlist);
 }
 
 function renderQ(que) {
