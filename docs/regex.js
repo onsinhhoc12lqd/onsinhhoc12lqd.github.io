@@ -19,12 +19,12 @@ function matchA1() {
     b = k.match(/(?<=(B\)\:))(.)*(?=(( )*C\)\:|\n( )*?C))/gm).map(e=>e.replace(/\s+/g,' ').trim()).filter(xx => xx!=="");
     c = k.match(/(?<=(C\)\:))(.)*(?=(( )*D\)\:|\n( )*?D))/gm).map(e=>e.replace(/\s+/g,' ').trim()).filter(xx => xx!=="");
     d = k.match(/(?<=(D\)\:))(.)*(?=\n)/gm).map(e=>e.replace(/\s+/g,' ').trim()).filter(xx => xx!=="");
-    console.log(d);
+    //console.log(d);
     af = []
     for (let i = 0; i<a.length; i++) {
         af[i] = [[a[i], 0],[b[i], 1],[c[i], 2],[d[i],3]]
     }
-    console.log(b); console.log(c);
+    //console.log(b); //console.log(c);
     return af;
 }
 const conv = {
@@ -41,8 +41,8 @@ function loadAns() {
 function assemble() {
     al = loadAns();
     let as = matchA1(), ks = clean(matchK1());
-    console.log(as)
-    //console.log(ks)
+    //console.log(as)
+    ////console.log(ks)
     sx = [];
     for (let i = 0; i<al.length; i++) {
         sx[i] = {
@@ -78,9 +78,9 @@ function renderQ(que) {
     document.getElementById("res").style.display = "none";
     qu = document.getElementById("qmain");
     qu.style.display = "";
-    console.log(que);
+    //console.log(que);
     for (let i = 0; i<que.length; i++) {
-        console.log(que[i][0])
+        //console.log(que[i][0])
         qu.insertAdjacentHTML("beforeend",`
 <p>Câu ${i+1} : ${que[i][0]["q"]}</p><br>
 <input type="radio" id="q${i}A" name="q${i}" value="A">
@@ -103,8 +103,8 @@ function renderQ(que) {
 
 
 function ansk() {
-    let ansarr = new Array(40)
-    for (let i = 0; i<40; i++) {
+    let ansarr = new Array(cc*ss.length)
+    for (let i = 0; i<cc*ss.length; i++) {
         try {
             v = document.querySelector(`input[name="q${i}"]:checked`).value
             ansarr[i] = conv[v];
@@ -115,7 +115,9 @@ function ansk() {
     let ac = 0;
     wr = [];
     cr = []
+    //console.log(qss)
     ansarr.forEach((e, i) => {
+        //console.log(i);
         if (e===qss[i][0]["a"])  {
             ac+=1;cr.push([i, e, qss[i][0]])
         } else wr.push([i, e, qss[i][0]])
